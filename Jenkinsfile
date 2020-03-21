@@ -9,13 +9,14 @@ pipeline {
 	stage('Set gitlog variable') {
       steps {
 			Script {
-				gitlogs = sh(returnStdout: true, script: 'git log -3 --format=%ad | %an | $s  " --date=relative')
+				gitlogs = sh(returnStdout: true, script: 'git log -3 --format="%ad | %an | $s"  --date=relative')
 		}
       }
     }
 	stage('Notify on Slack') {
       steps {
-        slackSend colour: '#0000FF', message: "Branch  -  '${env.BRANCH_NAME}' Last 3 commits \n\n *===Changes_are===* | *===Author===* | *===Commits===* \n ${gitlogs}"
+        slackSend colour: '#0000FF', message: "Branch  - 
+		'${env.BRANCH_NAME}' Last 3 commits \n\n *===Changes_are===* | *===Author===* | *===Commits===* \n ${gitlogs}"
       }
     }
   }
