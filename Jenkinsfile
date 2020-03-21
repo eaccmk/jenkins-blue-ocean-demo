@@ -15,8 +15,7 @@ pipeline {
     }
 	stage('Notify on Slack') {
       steps {
-        slackSend colour: '#0000FF', message: "Branch  - 
-		'${env.BRANCH_NAME}' Last 3 commits \n\n *===Changes_are===* | *===Author===* | *===Commits===* \n ${gitlogs}"
+        slackSend colour: '#0000FF', message: "Branch  - '${env.BRANCH_NAME}' Last 3 commits \n\n *===Changes_are===* | *===Author===* | *===Commits===* \n ${gitlogs}"
       }
     }
   }
