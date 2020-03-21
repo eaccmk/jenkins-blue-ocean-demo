@@ -9,7 +9,7 @@ pipeline {
 	stage('Set gitlog variable') {
       steps {
 			Script {
-				gitlogs = sh(returnStdout: true, script: 'git log -3 --format="%ad | %an | $s"  --date=relative')
+				gitlogs = sh(returnStdout: true, script: 'git log -3 --format="%ad | %an | $s" ')
 		}
       }
     }
